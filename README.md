@@ -1,5 +1,4 @@
 
----
 
 # 🎬 Netflix Data Analysis & Content Forecasting  
 
@@ -52,7 +51,7 @@ This analysis is valuable for anyone interested in streaming industry trends.
 1️⃣ Clone the repository:  
 
 ```bash
-git clone https://github.com/yourusername/Netflix-Data-Analysis-and-Content-Forecasting.git
+git clone https://github.com/Nikita7219/Netflix-Data-Analysis-and-Content-Forecasting.git
 cd Netflix-Data-Analysis-and-Content-Forecasting
 ```
 
