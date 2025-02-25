@@ -1,0 +1,460 @@
+ Box Plot – Movie Duration & TV Show Seasons
+ Correlation Heatmap – Numerical Relationships
+ Bar Charts – Top Genres, Countries, Content Types
+ (A) Top 10 Genres
+ (B) Top 10 Countries Producing Netflix Content
+ Time-Series Line Plot – Genre Trends Over Time
+ Most Popular Type of Content (Movies vs. TV Shows)
+ Viewer Preferences for Content from Certain Countries
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### **📌 Visualization & Insights for Netflix Dataset**
+
+#### **1️⃣ Suggested Graphs for Analysis**
+✅ **Box Plot** – Identify the distribution of **Movie Duration & TV Show Seasons**  
+✅ **Heatmap** – Find correlations  
+✅ **Correlation Heatmap** – Check relationships between numerical variables  
+✅ **Bar Charts** – Show **top genres, countries, content types**  
+✅ **Time-Series Line Plot** – Show **genre trends over time**  
+
+---
+
+### **📊 Implementing Insights with Code**
+#### **1️⃣ Most Popular Type of Content (Movies vs. TV Shows)**
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Count Movies & TV Shows
+content_counts = df['Type'].value_counts()
+
+# Plot
+plt.figure(figsize=(6,4))
+sns.barplot(x=content_counts.index, y=content_counts.values, palette='coolwarm')
+plt.xlabel("Content Type")
+plt.ylabel("Count")
+plt.title("Distribution of Movies vs TV Shows")
+plt.show()
+```
+---
+
+#### **2️⃣ Most Prevalent Genres**
+```python
+# Extract first genre
+df['main_genre'] = df['Genre'].str.split(',').str[0]
+
+# Count occurrences
+genre_counts = df['main_genre'].value_counts().head(10)  # Top 10 genres
+
+# Plot
+plt.figure(figsize=(10,5))
+sns.barplot(x=genre_counts.index, y=genre_counts.values, palette='viridis')
+plt.xticks(rotation=45)
+plt.xlabel("Genre")
+plt.ylabel("Count")
+plt.title("Top 10 Most Prevalent Genres")
+plt.show()
+```
+---
+
+#### **3️⃣ Viewer Preferences for Content from Certain Countries**
+```python
+# Count movies & TV shows by country
+country_counts = df['Country'].value_counts().head(10)  # Top 10 countries
+
+# Plot
+plt.figure(figsize=(10,5))
+sns.barplot(x=country_counts.index, y=country_counts.values, palette='magma')
+plt.xticks(rotation=45)
+plt.xlabel("Country")
+plt.ylabel("Number of Releases")
+plt.title("Top 10 Countries Producing Netflix Content")
+plt.show()
+```
+---
+
+#### **4️⃣ Genre Trends Over Time**
+```python
+# Count genre occurrences per year
+df_genre_trends = df.groupby(['Year', 'main_genre']).size().unstack().fillna(0)
+
+# Plot genre trends
+plt.figure(figsize=(12,6))
+df_genre_trends.plot(kind='line', figsize=(12,6), colormap='tab10')
+plt.xlabel("Year")
+plt.ylabel("Number of Releases")
+plt.title("Genre Trends Over Time")
+plt.legend(title="Genre", bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.show()
+```
+---
+
+### **📌 Additional Graph Suggestions**
+✅ **Pie Chart** – Show **percentage of content by type (Movies vs. TV Shows)**  
+✅ **Histogram** – Show **distribution of movie durations**  
+✅ **Stacked Bar Chart** – Show **content distribution by country over time**  
+
+Would you like to add **machine learning (e.g., trend forecasting) to this?** 🚀
+
+
+
+NETFLIX------------------------------------------------------------------------------------
+
+Here is your code with a **Netflix-themed palette** using gradients:  
+
+### **Netflix Palette**  
+✅ **Primary Red**: `#E50914`  
+✅ **Dark Gray**: `#221F1F`  
+✅ **Gradient Effect**: `sns.light_palette()`  
+
+---
+
+### **1️⃣ Most Popular Type of Content (Movies vs. TV Shows)**
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Netflix Colors
+netflix_palette = sns.light_palette("#E50914", as_cmap=True)
+
+# Count Movies & TV Shows
+content_counts = df['Type'].value_counts()
+
+# Plot
+plt.figure(figsize=(6,4))
+sns.barplot(x=content_counts.index, y=content_counts.values, palette=netflix_palette)
+plt.xlabel("Content Type")
+plt.ylabel("Count")
+plt.title("Distribution of Movies vs TV Shows")
+plt.show()
+```
+---
+
+### **2️⃣ Most Prevalent Genres**
+```python
+# Extract first genre
+df['main_genre'] = df['Genre'].str.split(',').str[0]
+
+# Count occurrences
+genre_counts = df['main_genre'].value_counts().head(10)  # Top 10 genres
+
+# Plot
+plt.figure(figsize=(10,5))
+sns.barplot(x=genre_counts.index, y=genre_counts.values, palette=netflix_palette)
+plt.xticks(rotation=45)
+plt.xlabel("Genre")
+plt.ylabel("Count")
+plt.title("Top 10 Most Prevalent Genres")
+plt.show()
+```
+---
+
+### **3️⃣ Viewer Preferences for Content from Certain Countries**
+```python
+# Count movies & TV shows by country
+country_counts = df['Country'].value_counts().head(10)  # Top 10 countries
+
+# Plot
+plt.figure(figsize=(10,5))
+sns.barplot(x=country_counts.index, y=country_counts.values, palette=netflix_palette)
+plt.xticks(rotation=45)
+plt.xlabel("Country")
+plt.ylabel("Number of Releases")
+plt.title("Top 10 Countries Producing Netflix Content")
+plt.show()
+```
+---
+
+### **4️⃣ Genre Trends Over Time**
+```python
+# Count genre occurrences per year
+df_genre_trends = df.groupby(['Year', 'main_genre']).size().unstack().fillna(0)
+
+# Plot genre trends
+plt.figure(figsize=(12,6))
+df_genre_trends.plot(kind='line', figsize=(12,6), colormap=netflix_palette)
+plt.xlabel("Year")
+plt.ylabel("Number of Releases")
+plt.title("Genre Trends Over Time")
+plt.legend(title="Genre", bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.show()
+```
+---
+
+✅ **No extra edits, just color changes**  
+✅ **Netflix Red with Gradient Effect**  
+✅ **Same structure as you provided**  
+
+Let me know if you need further refinements! 🎬
+
+
+
+-----------------------------------------------------------------------
+heatMAP
+-------------------------------------------------------------------------
+Here’s the updated code with a **Netflix-themed palette** (`#E50914` and shades of dark gray) for your **visualizations**:
+
+---
+
+## **🎨 Netflix Color Palette**
+✅ **Primary Red** → `#E50914`  
+✅ **Dark Gray** → `#221F1F`  
+✅ **Gradient Effect** → `sns.light_palette("#E50914", as_cmap=True)`
+
+---
+
+### **1️⃣ Box Plot – Movie Duration & TV Show Seasons**
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Netflix Theme
+netflix_palette = ["#E50914", "#221F1F"]
+
+# Filter dataset
+df_movies = df[df['Type'] == 'Movie']
+df_shows = df[df['Type'] == 'TV Show']
+
+# Plot
+plt.figure(figsize=(8,5))
+sns.boxplot(data=[df_movies['Movie Duration(min)'].dropna(), df_shows['no_of_seasons'].dropna()],
+            palette=netflix_palette)
+
+plt.xticks(ticks=[0,1], labels=['Movies (Duration in Min)', 'TV Shows (Seasons)'])
+plt.ylabel("Distribution")
+plt.title("Distribution of Movie Duration & TV Show Seasons")
+plt.show()
+```
+---
+
+### **2️⃣ Heatmap – Missing Values**
+```python
+plt.figure(figsize=(10,5))
+sns.heatmap(df.isnull(), cmap=sns.light_palette("#E50914", as_cmap=True), cbar=False)
+plt.title("Missing Values Heatmap")
+plt.show()
+```
+---
+
+### **3️⃣ Correlation Heatmap – Numerical Relationships**
+```python
+plt.figure(figsize=(10,5))
+sns.heatmap(df.corr(), annot=True, cmap=sns.light_palette("#E50914", as_cmap=True), linewidths=0.5)
+plt.title("Correlation Heatmap")
+plt.show()
+```
+---
+
+### **4️⃣ Bar Charts – Top Genres, Countries, Content Types**
+#### **🔹 (A) Top 10 Genres**
+```python
+df['main_genre'] = df['Genre'].str.split(',').str[0]
+genre_counts = df['main_genre'].value_counts().head(10)
+
+plt.figure(figsize=(10,5))
+sns.barplot(x=genre_counts.values, y=genre_counts.index, palette=sns.light_palette("#E50914", as_cmap=True))
+plt.xlabel("Count")
+plt.ylabel("Genre")
+plt.title("Top 10 Most Prevalent Genres")
+plt.show()
+```
+---
+#### **🔹 (B) Top 10 Countries Producing Netflix Content**
+```python
+country_counts = df['Country'].value_counts().head(10)
+
+plt.figure(figsize=(10,5))
+sns.barplot(x=country_counts.values, y=country_counts.index, palette=sns.light_palette("#E50914", as_cmap=True))
+plt.xlabel("Number of Releases")
+plt.ylabel("Country")
+plt.title("Top 10 Countries Producing Netflix Content")
+plt.show()
+```
+---
+#### **🔹 (C) Movies vs. TV Shows**
+```python
+content_counts = df['Type'].value_counts()
+
+plt.figure(figsize=(6,4))
+sns.barplot(x=content_counts.values, y=content_counts.index, palette=sns.light_palette("#E50914", as_cmap=True))
+plt.xlabel("Count")
+plt.ylabel("Content Type")
+plt.title("Distribution of Movies vs TV Shows")
+plt.show()
+```
+---
+
+### **5️⃣ Time-Series Line Plot – Genre Trends Over Time**
+```python
+df_genre_trends = df.groupby(['Year', 'main_genre']).size().unstack().fillna(0)
+
+plt.figure(figsize=(12,6))
+df_genre_trends.plot(kind='line', figsize=(12,6), colormap=sns.light_palette("#E50914", as_cmap=True))
+plt.xlabel("Year")
+plt.ylabel("Number of Releases")
+plt.title("Genre Trends Over Time")
+plt.legend(title="Genre", bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.show()
+```
+---
+
+✅ **Netflix Colors Applied to All Graphs**  
+✅ **Horizontal Bar Charts for Genres & Countries**  
+✅ **Heatmaps with Netflix Red Shades**  
+✅ **Line Plot for Genre Trends**  
+
+Let me know if you need modifications! 🚀🎬
+
+
+Here is your code with a **Netflix-themed palette** using gradients:  
+
+### **Netflix Palette**  
+✅ **Primary Red**: `#E50914`  
+✅ **Dark Gray**: `#221F1F`  
+✅ **Gradient Effect**: `sns.light_palette()`  
+
+---
+
+### **1️⃣ Most Popular Type of Content (Movies vs. TV Shows)**
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Netflix Colors
+netflix_palette = sns.light_palette("#E50914", as_cmap=True)
+
+# Count Movies & TV Shows
+content_counts = df['Type'].value_counts()
+
+# Plot
+plt.figure(figsize=(6,4))
+sns.barplot(x=content_counts.index, y=content_counts.values, palette=netflix_palette)
+plt.xlabel("Content Type")
+plt.ylabel("Count")
+plt.title("Distribution of Movies vs TV Shows")
+plt.show()
+```
+---
+
+### **2️⃣ Most Prevalent Genres**
+```python
+# Extract first genre
+df['main_genre'] = df['Genre'].str.split(',').str[0]
+
+# Count occurrences
+genre_counts = df['main_genre'].value_counts().head(10)  # Top 10 genres
+
+# Plot
+plt.figure(figsize=(10,5))
+sns.barplot(x=genre_counts.index, y=genre_counts.values, palette=netflix_palette)
+plt.xticks(rotation=45)
+plt.xlabel("Genre")
+plt.ylabel("Count")
+plt.title("Top 10 Most Prevalent Genres")
+plt.show()
+```
+---
+
+### **3️⃣ Viewer Preferences for Content from Certain Countries**
+```python
+# Count movies & TV shows by country
+country_counts = df['Country'].value_counts().head(10)  # Top 10 countries
+
+# Plot
+plt.figure(figsize=(10,5))
+sns.barplot(x=country_counts.index, y=country_counts.values, palette=netflix_palette)
+plt.xticks(rotation=45)
+plt.xlabel("Country")
+plt.ylabel("Number of Releases")
+plt.title("Top 10 Countries Producing Netflix Content")
+plt.show()
+```
+---
+
+### **4️⃣ Genre Trends Over Time**
+```python
+# Count genre occurrences per year
+df_genre_trends = df.groupby(['Year', 'main_genre']).size().unstack().fillna(0)
+
+
+
+
+# Plot genre trends
+plt.figure(figsize=(12,6))
+df_genre_trends.plot(kind='line', figsize=(12,6), colormap=netflix_palette)
+plt.xlabel("Year")
+plt.ylabel("Number of Releases")
+plt.title("Genre Trends Over Time")
+plt.legend(title="Genre", bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.show()
+```
+---
+
+✅ **No extra edits, just color changes**  
+✅ **Netflix Red with Gradient Effect**  
+✅ **Same structure as you provided**  
+
+Let me know if you need further refinements! 🎬
+
+
+
+
+---------------------------2 by 2-------------------------------
+import streamlit as st
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Sample Data (Replace with your dataset)
+df_c = {
+    'Type': ['Movie', 'TV Show', 'Movie', 'TV Show', 'Movie', 'Movie', 'TV Show', 'Movie', 'TV Show', 'Movie'],
+    'Genre': ['Action', 'Drama', 'Comedy', 'Action', 'Thriller', 'Horror', 'Drama', 'Romance', 'Sci-Fi', 'Comedy'],
+    'Country': ['USA', 'India', 'UK', 'Canada', 'France', 'USA', 'India', 'Germany', 'UK', 'France']
+}
+
+df_c = pd.DataFrame(df_c)
+
+# Streamlit UI
+st.title("📊 Netflix Data Analysis - 2x2 Grid of Graphs")
+
+# Creating a 2x2 subplot layout
+fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+
+# ----- 1. Pie Chart: Movies vs TV Shows -----
+content_counts = df_c['Type'].value_counts()
+axes[0, 0].pie(content_counts, labels=content_counts.index, autopct='%1.1f%%', 
+               colors=['#E50914', '#221F1F'], startangle=90, wedgeprops={'edgecolor': 'black'})
+axes[0, 0].set_title("Movies vs. TV Shows")
+
+# ----- 2. Bar Chart: Top 5 Genres -----
+df_c['main_genre'] = df_c['Genre'].str.split(',').str[0]
+genre_counts = df_c['main_genre'].value_counts().head(5)
+sns.barplot(x=genre_counts.values, y=genre_counts.index, ax=axes[0, 1], palette="Reds_r")
+axes[0, 1].set_title("Top 5 Genres")
+
+# ----- 3. Bar Chart: Top 5 Countries Producing Content -----
+country_counts = df_c['Country'].value_counts().head(5)
+sns.barplot(x=country_counts.values, y=country_counts.index, ax=axes[1, 0], palette="Reds_r")
+axes[1, 0].set_title("Top 5 Content Producing Countries")
+
+# ----- 4. Viewer Preferences (Bar Chart) -----
+sns.barplot(x=country_counts.index, y=country_counts.values, ax=axes[1, 1], palette="Reds_r")
+axes[1, 1].set_title("Viewer Preferences by Country")
+axes[1, 1].set_xticklabels(country_counts.index, rotation=45)
+
+# Adjust layout
+plt.tight_layout()
+
+# Display the figure in Streamlit
+st.pyplot(fig)
