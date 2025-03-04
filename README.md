@@ -30,7 +30,7 @@ This dashboard includes a variety of charts to help visualize trends:
 
 ✔ **Pie Chart** – Movie durations & TV show seasons distribution.  
 ✔ **Tree Chart** – Genre distribution across different countries.  
-✔ **Bar Charts** – Top genres, viewer preferences by country, and leading content-producing countries.  
+✔ **Bar Charts** – Top genres, viewer preferences by country.  
 
 These visualizations make it easy to interpret large datasets and spot meaningful patterns.  
 
