@@ -186,32 +186,7 @@ with tabs[2]:
     ax_bar3.set_title("Top 10 Countries Producing Netflix Content")
     st.pyplot(fig_bar3) 
 
-    #----------------------------------------------------------------
-    # 3. Bar Chart: Top 10 Countries Producing Netflix Content 
-    #----------------------------------------------------------------
-
-    st.markdown('''
-                
-                ---
-                
-                ### 🔹Top 10 Countries Producing Netflix Content''')
-
-    country_counts = df_c['Country'].value_counts().head(10)
-    # Generate a color gradient from red
-    fig_bar2, ax_bar2= plt.subplots()
-    gradient_palette = sns.light_palette("#E50914", n_colors=len(genre_counts),reverse=True)
-    sns.barplot(x=country_counts.values, y=country_counts.index, palette=gradient_palette)
-
-    # Add count labels to each bar
-    for i, v in enumerate(country_counts.values):
-        ax_bar2.text(v + 2, i, str(v), color='black', va='center', fontsize=12)  
-
-    ax_bar2.set_xlabel("Number of Releases")
-    ax_bar2.set_ylabel("Country")
-    ax_bar2.set_title("Top 10 Countries Producing Netflix Content")
-    st.pyplot(fig_bar2)   
-
- 
+   
     #---------------------TAB 4: Time Series Forecasting------------------
 with tabs[3]:
     st.markdown('### Time Series Forecasting')
